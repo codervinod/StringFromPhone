@@ -43,11 +43,11 @@ public:
             
             bool empty_list =possible_words.empty();
             vector<string> current =possible_words;
+            possible_words.erase(possible_words.begin(),possible_words.end());
             
-            //recieved charachters for first number
+
             for(string::iterator itr2=possible.begin();itr2!=possible.end();++itr2)
             {
-                //iterating over possible characters
                 const char new_char = *itr2;
                 
                 if(empty_list)
@@ -59,8 +59,6 @@ public:
                     possible_words.push_back(s);
                     continue;
                 }
-                
-                possible_words.erase(possible_words.begin(),possible_words.end());
                 
                 for(vector<string>::iterator itr3 = current.begin(); itr3 != current.end();++itr3)
                 {
@@ -73,48 +71,6 @@ public:
                 }
                 
             }
-        }
-    }
-    
-    void getPossibleString(string ph_number,vector<string> &possible_words)
-    {
-        for(string::iterator itr=ph_number.begin();itr != ph_number.end();++itr)
-        {
-            const char c=*itr;
-            string &possible =_ph_map[c];
-            bool empty_list =possible_words.empty();
-            
-            vector<string> new_possible_words;
-            
-            for(string::iterator itr2=possible.begin();itr2!=possible.end();++itr2)
-            {
-                const char new_char = *itr2;
-                
-                if(empty_list)
-                {
-                    stringstream ss;
-                    string s;
-                    ss << new_char;
-                    ss >> s;
-                    possible_words.push_back(s);
-                    continue;
-                }
-
-                while(!possible_words.empty())
-                {
-                    vector<string> ::iterator itr3 = possible_words.begin();
-                    stringstream ss;
-                    ss <<*itr3;
-                    ss <<new_char;
-                    string new_word;
-                    ss>> new_word;
-                    new_possible_words.push_back(new_word);
-                    itr3 =possible_words.erase(itr3);
-                }
-                
-                
-            }
-            possible_words = new_possible_words;
         }
     }
    
