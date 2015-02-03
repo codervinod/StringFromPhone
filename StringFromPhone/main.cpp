@@ -34,7 +34,7 @@ public:
         
     }
     
-    void getPossibleString2(string ph_number,vector<string> &possible_words)
+    void getPossibleString(string ph_number,vector<string> &possible_words)
     {
         for(string::iterator itr=ph_number.begin();itr != ph_number.end();++itr)
         {
@@ -86,7 +86,7 @@ int main(int argc, const char * argv[]) {
     
     StringFromPhone str_from_ph;
     vector<string> possible;
-    str_from_ph.getPossibleString2("65",possible);
+    str_from_ph.getPossibleString("354",possible);
     
     for(vector<string>::iterator itr = possible.begin(); itr !=  possible.end(); ++itr)
     {
